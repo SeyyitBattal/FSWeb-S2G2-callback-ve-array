@@ -124,9 +124,18 @@ function Kazananlar(fifaData, Finaller) {
 	💡 İPUCU: her cümlenin adım 4'te belirtilen cümleyle birebir aynı olması gerekmektedir.
 */
 
-function YillaraGoreKazananlar(/* kodlar buraya */) {
-  /* kodlar buraya */
+function YillaraGoreKazananlar(fifaData, Finaller, Yillar, Kazananlar) {
+  const finalMaclari = Finaller(fifaData);
+  const finalYillari = Yillar(fifaData, Finaller);
+  const kazanan1 = Kazananlar(fifaData, Finaller);
+  const sonuc = finalYillari.map((yil, index) => {
+    const ulke = kazanan1[index];
+    return `${yil} yılında, ${ulke} dünya kupasını kazandı!`;
+  });
+  return sonuc;
 }
+const sonuc = YillaraGoreKazananlar(fifaData, Finaller, Yillar, Kazananlar);
+console.log(sonuc);
 
 /*  Görev 6: 
 	Bir higher order fonksiyonu olan `OrtalamaGolSayisi` isimli fonksiyona aşağıdakileri uygulayın: 
